@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.neighbors import KNeighborsClassifier
+from joblib import dump, load
 
 DATA_URL = "http://archive.ics.uci.edu/ml/machine-learning-databases/undocumented/connectionist-bench/sonar/sonar.all-data"
 df = pd.read_csv(DATA_URL, header=None, prefix='X')
@@ -25,3 +26,9 @@ print(result_cm1)
 
 scores = cross_val_score(knn1, data, labels, cv=5, groups=labels)
 print(scores)
+# make a directory data
+dump(knn1, "data/demo34.joblib")
+knn2 = load("data/demo34.joblib")
+y_predict2 = knn2.predict(X_test)
+result2 = confusion_matrix(y_predict, y_predict2)
+print(result2)
