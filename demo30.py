@@ -3,9 +3,9 @@ import numpy as np
 
 from sklearn.cluster import KMeans
 
-X = np.r_[np.random.randn(500, 2) + [2, 2],
-          np.random.randn(500, 2) + [0, -2],
-          np.random.randn(500, 2) + [-2, 2]]
+X = np.r_[np.random.randn(5000, 2) + [2, 2],
+          np.random.randn(5000, 2) + [0, -2],
+          np.random.randn(5000, 2) + [-2, 2]]
 kmean = KMeans(n_init=1, n_clusters=4)
 kmean.fit(X)
 print(kmean.cluster_centers_)
